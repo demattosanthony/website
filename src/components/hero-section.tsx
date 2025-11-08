@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <div
       id="about"
-      className="relative sm:min-h-[80vh] flex flex-col items-center justify-start pt-[12vh] sm:pt-[16vh] px-4 sm:px-8 pb-8"
+      className="relative sm:min-h-[65vh] flex flex-col items-center justify-start pt-[12vh] sm:pt-[14vh]"
     >
       {/* Profile Picture */}
       <motion.div className="mb-6 sm:mb-8" {...createDelayedFadeInUp(0)}>

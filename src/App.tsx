@@ -12,8 +12,13 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import BlogPage from "./pages/blog/page";
 import BlogPostPage from "./pages/blog/[blogId]/page";
+import ToolsPage from "./pages/tools/page";
+import MarkdownViewerPage from "./pages/tools/markdown-viewer/page";
+import JsonPage from "./pages/tools/json/page";
+import ColorPickerPage from "./pages/tools/color-picker/page";
 
-function Layout() {
+// Root wrapper with providers and global components
+function Root() {
   return (
     <ThemeProvider
       attribute="class"
@@ -23,10 +28,19 @@ function Layout() {
     >
       <ScrollRestoration />
       <Toaster />
+      <Outlet />
+    </ThemeProvider>
+  );
+}
+
+// Main layout with header and footer
+function Layout() {
+  return (
+    <>
       <Header />
       <Outlet />
       <Footer />
-    </ThemeProvider>
+    </>
   );
 }
 
@@ -37,29 +51,45 @@ function NotFound() {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Root />,
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: <Layout />,
+        children: [
+          {
+            path: "/",
+            element: <HomePage />,
+          },
+          {
+            path: "/blog",
+            element: <BlogPage />,
+          },
+          {
+            path: "/blog/:blogId",
+            element: <BlogPostPage />,
+          },
+          {
+            path: "/tools",
+            element: <ToolsPage />,
+          },
+          {
+            path: "*",
+            element: <NotFound />,
+          },
+        ],
       },
       {
-        path: "/blog",
-        element: <BlogPage />,
+        path: "/tools/markdown",
+        element: <MarkdownViewerPage />,
       },
       {
-        path: "/blog/:blogId",
-        element: <BlogPostPage />,
+        path: "/tools/json",
+        element: <JsonPage />,
       },
-    ],
-  },
-  {
-    path: "*",
-    element: <Layout />,
-    children: [
       {
-        path: "*",
-        element: <NotFound />,
+        path: "/tools/color-picker",
+        element: <ColorPickerPage />,
       },
     ],
   },

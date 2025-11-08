@@ -43,7 +43,7 @@
 }
 :root {
   --radius: 0.65rem;
-  --background: oklch(100 0 0);
+  --background: oklch(0.99 0 89.9);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -141,5 +141,39 @@
 
   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+/* Print styles for PDF export */
+@media print {
+  /* Hide everything except the markdown preview */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Show only the preview content and its children */
+  [data-print-content],
+  [data-print-content] * {
+    visibility: visible;
+  }
+
+  /* Position the content at the top left */
+  [data-print-content] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  /* Hide buttons and UI elements */
+  button,
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  /* Remove backgrounds and borders for clean printing */
+  body {
+    background: white;
+    color: black;
   }
 }

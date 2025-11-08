@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router";
+import logo from "../logo.svg";
 
 const navLinks = [
-  { path: "/", label: "About me" },
+  { path: "/", label: "Home" },
   { id: "timeline", label: "Timeline" },
   { path: "/blog", label: "Blog" },
+  { path: "/tools", label: "Tools" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -182,30 +184,36 @@ export default function Header() {
 
   return (
     <header className="h-14 sm:h-16 fixed top-0 left-0 right-0 z-50">
-      <div className="h-14 sm:h-16 bg-background/80 backdrop-blur-md w-full flex items-center justify-between px-3 sm:px-6 md:px-8 border-b border-border/40">
-        <div>
-          <Link to="/" className="flex items-center cursor-pointer group">
-            <motion.h1
-              className="text-base sm:text-lg md:text-xl font-normal tracking-tight"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+      <div className="h-14 sm:h-16 bg-background/70 backdrop-blur-md w-full border-b border-border px-4 sm:px-8">
+        <div className="max-w-7xl mx-auto h-full flex items-center justify-between">
+          <div>
+            <Link
+              to="/"
+              className="flex items-center gap-2 cursor-pointer group"
             >
-              <span className="hidden sm:inline">Anthony DeMattos</span>
-              <span className="inline sm:hidden">A. DeMattos</span>
-            </motion.h1>
-          </Link>
-        </div>
+              <img src={logo} alt="Anthony DeMattos" className="w-6 h-6" />
+              <motion.h1
+                className="text-base sm:text-lg md:text-xl font-normal"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <span className="hidden sm:inline">Anthony DeMattos</span>
+                <span className="inline sm:hidden">A. DeMattos</span>
+              </motion.h1>
+            </Link>
+          </div>
 
-        <nav className="flex items-center gap-0.5 sm:gap-1 md:gap-2">
-          {navLinks.map((link) => (
-            <NavItem
-              key={link.id || link.path}
-              link={link}
-              active={activeTab === (link.id || link.path)}
-              onClick={handleClick}
-            />
-          ))}
-        </nav>
+          <nav className="flex items-center gap-0.5 sm:gap-1 md:gap-2">
+            {navLinks.map((link) => (
+              <NavItem
+                key={link.id || link.path}
+                link={link}
+                active={activeTab === (link.id || link.path)}
+                onClick={handleClick}
+              />
+            ))}
+          </nav>
+        </div>
       </div>
     </header>
   );
