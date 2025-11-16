@@ -1,0 +1,11 @@
+{
+  "timestamp": 1763256346234,
+  "version": "0.2.0",
+  "routes": {
+    "pages": 7,
+    "apis": 0,
+    "sockets": 0,
+    "layouts": 1
+  },
+  "bundleSize": 10296609
+}
