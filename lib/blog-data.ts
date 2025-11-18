@@ -1,9 +1,3 @@
-import syyclops3CoverImage from "@/assets/blog/syyclops-3/1.jpg";
-import syyclops3Image1 from "@/assets/blog/syyclops-3/1.jpg";
-import syyclops3Image2 from "@/assets/blog/syyclops-3/2.jpg";
-import syyclops3Image3 from "@/assets/blog/syyclops-3/3.png";
-import syyclops3Image4 from "@/assets/blog/syyclops-3/4.png";
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -93,12 +87,12 @@ If your organization has already gone through this process and defined objective
 If this resonates with you, let's connect. I'd love to hear about your challenges and explore how we can help. 
 
 Let's build the future of smart buildings together.`,
-    coverImage: syyclops3CoverImage,
+    coverImage: "/blog/syyclops-3/1.jpg",
     images: [
-      syyclops3Image1,
-      syyclops3Image2,
-      syyclops3Image3,
-      syyclops3Image4,
+      "/blog/syyclops-3/1.jpg",
+      "/blog/syyclops-3/2.jpg",
+      "/blog/syyclops-3/3.png",
+      "/blog/syyclops-3/4.png",
     ],
   },
 ];

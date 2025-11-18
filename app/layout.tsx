@@ -1,3 +1,5 @@
+"use server";
+
 import React from "react";
 import type { PageMetadata } from "@ademattos/bunbox";
 import { ThemeProvider } from "next-themes";

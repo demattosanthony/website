@@ -1,6 +1,3 @@
-import syyclopsLogo from "@/assets/logos/syyclops.png";
-import hpuLogo from "@/assets/logos/hpu_purple.webp";
-
 interface TimelineItem {
   title: string;
   year?: string;
@@ -17,7 +14,7 @@ interface TimelineItem {
 export const timelineData: TimelineItem[] = [
   {
     title: "Syyclops",
-    logo: syyclopsLogo,
+    logo: "/logos/syyclops.png",
     logoAlt: "Syyclops",
     subsections: [
       {
@@ -43,7 +40,7 @@ export const timelineData: TimelineItem[] = [
   {
     title: "High Point University",
     year: "2017 - 2021",
-    logo: hpuLogo,
+    logo: "/logos/hpu_purple.webp",
     logoAlt: "High Point University",
     highlights: [
       "Bachelor of Science in Computer Science",

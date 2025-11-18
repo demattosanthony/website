@@ -235,8 +235,8 @@ export default function MarkdownViewerPage() {
 
   if (isFullscreen) {
     return (
-      <div className="w-full min-h-screen bg-background animate-in fade-in duration-500">
-        <div className="fixed top-4 right-4 z-10 flex gap-2 print:hidden backdrop-blur-sm bg-background/50 p-2 rounded-lg border shadow-lg animate-in slide-in-from-top duration-300">
+      <div className="w-full h-screen">
+        <div className="fixed top-4 right-4 z-10 flex gap-2 print:hidden backdrop-blur-sm bg-background/50 p-2 rounded-lg border shadow-lg">
           <ActionButton
             onClick={handleDownloadPDF}
             icon={Download}
@@ -251,7 +251,7 @@ export default function MarkdownViewerPage() {
           />
         </div>
         <div
-          className="container mx-auto px-4 py-8 max-w-4xl animate-in slide-in-from-bottom duration-700"
+          className="container mx-auto px-4 py-8 max-w-4xl"
           data-print-content
         >
           <MarkdownViewer content={markdown} />

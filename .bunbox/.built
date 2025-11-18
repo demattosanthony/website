@@ -1,5 +1,5 @@
 {
-  "timestamp": 1763256346234,
+  "timestamp": 1763260334429,
   "version": "0.2.0",
   "routes": {
     "pages": 7,
@@ -7,5 +7,5 @@
     "sockets": 0,
     "layouts": 1
   },
-  "bundleSize": 10296609
+  "bundleSize": 10302813
 }

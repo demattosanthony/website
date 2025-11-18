@@ -142,6 +142,10 @@
   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--muted-foreground) / 0.5);
   }
+
+  button {
+    cursor: pointer;
+  }
 }
 
 /* Print styles for PDF export */

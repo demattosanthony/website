@@ -1,6 +1,5 @@
 import { Tooltip, TooltipContent, TooltipTrigger } from "components/ui/tooltip";
-import linkedinIcon from "@/assets/logos/linkedin.svg";
-import githubIcon from "@/assets/logos/github.svg";
+import { useMemo } from "react";
 
 function ExternalAccountLink({
   href,
@@ -37,6 +36,14 @@ function ExternalAccountLink({
 }
 
 export default function Footer() {
+  const isToolsPage = useMemo(() => {
+    return location.pathname.startsWith("/tools/");
+  }, [location.pathname]);
+
+  if (isToolsPage) {
+    return null;
+  }
+
   return (
     <footer className="w-full py-8 px-4 sm:px-8 bg-[#1a1a1a] text-white">
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-7xl mx-auto">
@@ -46,12 +53,12 @@ export default function Footer() {
         <div className="flex items-center gap-5">
           <ExternalAccountLink
             href="https://www.linkedin.com/in/ademattos/"
-            icon={linkedinIcon}
+            icon={"/logos/linkedin.svg"}
             label="LinkedIn"
           />
           <ExternalAccountLink
             href="https://github.com/demattosanthony"
-            icon={githubIcon}
+            icon={"/logos/github.svg"}
             label="GitHub"
           />
         </div>

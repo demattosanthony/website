@@ -1,5 +1,4 @@
 import { CopyEmailButton } from "./copy-email-button";
-import profilePic from "@/assets/profile-pic.png";
 
 export default function ContactSection() {
   const email = "demattosanthony@gmail.com"; // Update with your actual email
@@ -31,7 +30,7 @@ export default function ContactSection() {
             <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-linear-to-br from-green-400 via-green-500 to-emerald-500 p-[3px]">
               <div className="w-full h-full rounded-full overflow-hidden bg-[#1a1a1a]">
                 <img
-                  src={profilePic}
+                  src={"/profile-pic.png"}
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />

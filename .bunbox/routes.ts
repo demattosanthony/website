@@ -6,24 +6,26 @@
 import Page0 from "../app/blog/[blogId]/page.tsx";
 import Page1 from "../app/blog/page.tsx";
 import Page2 from "../app/page.tsx";
-import Page3 from "../app/tools/color-picker/page.tsx";
-import Page4 from "../app/tools/json/page.tsx";
-import Page5 from "../app/tools/markdown/page.tsx";
-import Page6 from "../app/tools/page.tsx";
-import Layout7 from "../app/layout.tsx";
+import Page3 from "../app/projects/[projectId]/page.tsx";
+import Page4 from "../app/tools/color-picker/page.tsx";
+import Page5 from "../app/tools/json/page.tsx";
+import Page6 from "../app/tools/markdown/page.tsx";
+import Page7 from "../app/tools/page.tsx";
+import Layout8 from "../app/layout.tsx";
 
 export const routes = {
   "/blog/[blogId]": Page0,
   "/blog": Page1,
   "/": Page2,
-  "/tools/color-picker": Page3,
-  "/tools/json": Page4,
-  "/tools/markdown": Page5,
-  "/tools": Page6
+  "/projects/[projectId]": Page3,
+  "/tools/color-picker": Page4,
+  "/tools/json": Page5,
+  "/tools/markdown": Page6,
+  "/tools": Page7
 };
 
 export const layouts = {
-  "/": Layout7
+  "/": Layout8
 };
 
 // Set of route paths that require server-side rendering

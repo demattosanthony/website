@@ -147,6 +147,7 @@ const NavItem = ({ link, active, onClick }: NavItemProps) => {
 
 export default function Header() {
   const [activeTab, setActiveTab] = useState<string>("/");
+  const [isToolsPage, setIsToolsPage] = useState(false);
   const { navigate } = useRouter();
 
   useEffect(() => {
@@ -156,7 +157,14 @@ export default function Header() {
     } else {
       setActiveTab(location.pathname);
     }
+    // Check if we're on a tools page (not the tools listing page)
+    setIsToolsPage(location.pathname.startsWith("/tools/"));
   }, [location.pathname]);
+
+  // Hide header on tools pages
+  if (isToolsPage) {
+    return null;
+  }
 
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
