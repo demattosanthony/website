@@ -18,7 +18,7 @@ export default function HeroSection() {
             <button className="w-[270px] h-[270px] rounded-full overflow-hidden bg-linear-to-br from-green-400 via-green-500 to-emerald-500 p-[5px] shadow-xl cursor-pointer transition-all hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-background bg-background">
                 <img
-                  src={"/profile-pic.png"}
+                  src={"/profile-pic-small.png"}
                   alt="Anthony's profile"
                   className="w-full h-full object-cover"
                 />
@@ -28,7 +28,7 @@ export default function HeroSection() {
           <DialogContent className="max-w-[90vw] max-h-[90vh] w-auto p-0 border-0 bg-transparent">
             <div className="relative flex items-center justify-center">
               <img
-                src={"/profile-pic.png"}
+                src={"/profile-pic-small.png"}
                 alt="Anthony's profile - full size"
                 className="max-w-full max-h-[85vh] w-auto h-auto rounded-lg shadow-2xl"
               />

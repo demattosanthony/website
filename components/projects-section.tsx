@@ -18,7 +18,7 @@ export default function ProjectsSection() {
           const visualAlignmentClass =
             project.id === "syyclops"
               ? "justify-center px-6 sm:px-12 py-12 overflow-visible"
-              : "justify-end pl-6 sm:pl-12 pr-0 sm:pr-0 py-12";
+              : "justify-center sm:justify-end px-6 sm:pl-12 sm:pr-0 py-12";
 
           return (
             <motion.div

@@ -27,9 +27,9 @@ export default function BlogPostPage() {
             <p className="text-muted-foreground mb-6">
               The blog post you're looking for doesn't exist.
             </p>
-            <Button onClick={() => navigate("/")}>
+            <Button onClick={() => navigate("/blog")}>
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Go Back Home
+              Go Back to Blog
             </Button>
           </Card>
         </div>
@@ -142,11 +142,11 @@ export default function BlogPostPage() {
         <div className="mt-16 pt-8 border-t border-border">
           <Button
             variant="ghost"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/blog")}
             className="cursor-pointer"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Home
+            Back to Blog
           </Button>
         </div>
       </div>

@@ -206,7 +206,7 @@ To establish this connection, I registered webhooks on the Senseware IAQ platfor
       src: "/projects/demofi/mobile-preview-light.svg",
       srcDark: "/projects/demofi/mobile-preview-dark.svg",
       alt: "DeMattos Finance Mobile App",
-      containerClassName: "relative w-full max-w-sm",
+      containerClassName: "relative w-full max-w-sm mx-auto sm:mx-0",
     },
     actions: [
       {
@@ -241,7 +241,7 @@ To establish this connection, I registered webhooks on the Senseware IAQ platfor
           },
           {
             type: "image",
-            image: "/projects/demofi/mobile.png",
+            image: "/projects/demofi/mobile.PNG",
             imageAlt: "DeMattos Finance Mobile",
           },
           {
@@ -263,7 +263,7 @@ To establish this connection, I registered webhooks on the Senseware IAQ platfor
       type: "gif",
       src: "/projects/open-spot/pkLot.gif",
       alt: "Open Spot Parking detection",
-      containerClassName: "relative w-full max-w-2xl",
+      containerClassName: "relative w-full max-w-2xl mx-auto sm:mx-0",
     },
     actions: [
       {
