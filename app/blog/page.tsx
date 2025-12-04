@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
 import { blogPosts } from "@/lib/blog-data";
 import { Badge } from "components/ui/badge";
 import { Button } from "components/ui/button";
@@ -53,21 +52,17 @@ export default function BlogPage() {
     <div className="min-h-screen bg-background pt-24 pb-16 px-4 sm:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl sm:text-5xl font-normal tracking-tight mb-8"
+        <h1
+          className="text-4xl sm:text-5xl font-normal tracking-tight mb-8 opacity-0 animate-slideLeft"
+          style={{ animationDelay: "0s" }}
         >
           My Blog
-        </motion.h1>
+        </h1>
 
         {/* Filters and Controls */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-border/40"
+        <div
+          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-border/40 opacity-0 animate-clipReveal"
+          style={{ animationDelay: "0.1s" }}
         >
           {/* Category Filters */}
           <div className="flex items-center gap-2 flex-wrap">
@@ -129,97 +124,69 @@ export default function BlogPage() {
               </Button>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Blog Posts */}
-        {viewMode === "list" ? (
-          <div className="space-y-6">
-            {filteredPosts.map((post, index) => (
-              <motion.div
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+        <div className={viewMode === "list" ? "space-y-6" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"}>
+          {filteredPosts.map((post, index) => (
+            <div
+              key={post.id}
+              className="opacity-0 animate-scaleIn"
+              style={{ animationDelay: `${0.15 + index * 0.05}s` }}
+            >
+              <a
+                href={`/blog/${post.id}`}
+                className={`group block transition-colors duration-200 ${
+                  viewMode === "list"
+                    ? "hover:bg-accent/30 -mx-4 px-4 py-6 rounded-lg"
+                    : "h-full hover:bg-accent/30 p-6 rounded-lg border border-border/40"
+                }`}
               >
-                <a
-                  href={`/blog/${post.id}`}
-                  className="group block hover:bg-accent/30 -mx-4 px-4 py-6 rounded-lg transition-colors duration-200"
-                >
+                {viewMode === "list" ? (
                   <div className="flex flex-col sm:flex-row gap-6">
-                    {/* Left: Category and Date */}
                     <div className="shrink-0 sm:w-32">
-                      <Badge
-                        variant="outline"
-                        className="mb-2 text-xs font-medium"
-                      >
+                      <Badge variant="outline" className="mb-2 text-xs font-medium">
                         {post.category}
                       </Badge>
-                      <p className="text-sm text-foreground/60">
-                        {formatDate(post.date)}
-                      </p>
+                      <p className="text-sm text-foreground/60">{formatDate(post.date)}</p>
                     </div>
-
-                    {/* Right: Title and Description */}
                     <div className="flex-1 min-w-0">
                       <h2 className="text-xl font-medium mb-2 group-hover:text-foreground/80 transition-colors">
                         {post.title}
                       </h2>
                       {post.description && (
-                        <p className="text-foreground/70 leading-relaxed">
-                          {post.description}
-                        </p>
+                        <p className="text-foreground/70 leading-relaxed">{post.description}</p>
                       )}
                     </div>
                   </div>
-                </a>
-              </motion.div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredPosts.map((post, index) => (
-              <motion.div
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <a
-                  href={`/blog/${post.id}`}
-                  className="group block h-full hover:bg-accent/30 p-6 rounded-lg transition-colors duration-200 border border-border/40"
-                >
-                  <Badge variant="outline" className="mb-3 text-xs font-medium">
-                    {post.category}
-                  </Badge>
-                  <h2 className="text-xl font-medium mb-2 group-hover:text-foreground/80 transition-colors">
-                    {post.title}
-                  </h2>
-                  {post.description && (
-                    <p className="text-foreground/70 leading-relaxed text-sm mb-4">
-                      {post.description}
-                    </p>
-                  )}
-                  <p className="text-sm text-foreground/60">
-                    {formatDate(post.date)}
-                  </p>
-                </a>
-              </motion.div>
-            ))}
-          </div>
-        )}
+                ) : (
+                  <>
+                    <Badge variant="outline" className="mb-3 text-xs font-medium">
+                      {post.category}
+                    </Badge>
+                    <h2 className="text-xl font-medium mb-2 group-hover:text-foreground/80 transition-colors">
+                      {post.title}
+                    </h2>
+                    {post.description && (
+                      <p className="text-foreground/70 leading-relaxed text-sm mb-4">
+                        {post.description}
+                      </p>
+                    )}
+                    <p className="text-sm text-foreground/60">{formatDate(post.date)}</p>
+                  </>
+                )}
+              </a>
+            </div>
+          ))}
+        </div>
 
         {/* Empty State */}
         {filteredPosts.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="text-center py-16"
-          >
+          <div className="text-center py-16 opacity-0 animate-fadeIn">
             <p className="text-foreground/60 text-lg">
               No posts found in this category.
             </p>
-          </motion.div>
+          </div>
         )}
       </div>
     </div>

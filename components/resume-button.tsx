@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 const RESUME_URL =
   "https://docs.google.com/document/d/1FmVeuLu7rgfSA8bV_OPdTiy2d2z9DY8i/edit";
 
@@ -21,39 +19,27 @@ const ambientGlowStyle = {
 export default function ResumeButton() {
   return (
     <div className="w-full flex items-center justify-center py-16 px-4">
-      <motion.a
+      <a
         href={RESUME_URL}
         target="_blank"
-        className="relative inline-flex items-center justify-center px-12 py-6 rounded-full bg-foreground text-background text-xl font-medium shadow-[0_20px_45px_rgba(0,0,0,0.35)] dark:shadow-[0_18px_45px_rgba(0,0,0,0.6)] overflow-hidden"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        className="relative inline-flex items-center justify-center px-12 py-6 rounded-full bg-foreground text-background text-xl font-medium shadow-[0_20px_45px_rgba(0,0,0,0.35)] dark:shadow-[0_18px_45px_rgba(0,0,0,0.6)] overflow-hidden transition-transform duration-200 ease-out hover:scale-105 active:scale-95"
       >
         {/* Rotating highlight hugging the border */}
-        <motion.span
+        <span
           aria-hidden
-          className="pointer-events-none absolute inset-0 rounded-full"
+          className="pointer-events-none absolute inset-0 rounded-full animate-spinSlow"
           style={borderGradientStyle}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
         />
 
         {/* Soft ambient glow */}
-        <motion.span
+        <span
           aria-hidden
-          className="pointer-events-none absolute inset-0 rounded-full opacity-60"
+          className="pointer-events-none absolute inset-0 rounded-full opacity-60 animate-floatY"
           style={ambientGlowStyle}
-          animate={{ y: [2, -2, 2] }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut",
-          }}
         />
 
         <span className="relative z-10">Download Resume</span>
-      </motion.a>
+      </a>
     </div>
   );
 }

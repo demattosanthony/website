@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
 import { tools } from "@/lib/tools-data";
 import { Button } from "components/ui/button";
 import { ArrowRight, Search } from "lucide-react";
@@ -42,11 +41,9 @@ export default function ToolsPage() {
     <div className="min-h-screen bg-background pt-24 pb-16 px-4 sm:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
+        <div
+          className="mb-8 opacity-0 animate-slideLeft"
+          style={{ animationDelay: "0s" }}
         >
           <h1 className="text-4xl sm:text-5xl font-normal tracking-tight mb-3">
             Tools
@@ -54,14 +51,12 @@ export default function ToolsPage() {
           <p className="text-foreground/60 text-lg">
             A collection of useful tools and utilities
           </p>
-        </motion.div>
+        </div>
 
         {/* Search and Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-8"
+        <div
+          className="mb-8 opacity-0 animate-clipReveal"
+          style={{ animationDelay: "0.1s" }}
         >
           {/* Search Bar */}
           <div className="relative mb-6">
@@ -91,16 +86,15 @@ export default function ToolsPage() {
               </button>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Tools Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredTools.map((tool, index) => (
-            <motion.div
+            <div
               key={tool.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="opacity-0 animate-scaleIn"
+              style={{ animationDelay: `${0.15 + index * 0.05}s` }}
             >
               <a
                 href={tool.path}
@@ -122,18 +116,13 @@ export default function ToolsPage() {
                   {tool.description}
                 </p>
               </a>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Empty State */}
         {filteredTools.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="text-center py-16"
-          >
+          <div className="text-center py-16 opacity-0 animate-fadeIn">
             <p className="text-foreground/60 text-lg mb-2">
               No tools found matching your criteria.
             </p>
@@ -147,7 +136,7 @@ export default function ToolsPage() {
             >
               Clear filters
             </Button>
-          </motion.div>
+          </div>
         )}
       </div>
     </div>

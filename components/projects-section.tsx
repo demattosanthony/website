@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import { createDelayedFadeInUp } from "@/lib/animation-variants";
 import { Button } from "components/ui/button";
 import { projects } from "@/lib/projects-data";
 import { useRouter } from "@ademattos/bunbox/client";
@@ -21,16 +19,18 @@ export default function ProjectsSection() {
               : "justify-center sm:justify-end px-6 sm:pl-12 sm:pr-0 py-12";
 
           return (
-            <motion.div
+            <div
               key={project.id}
               className="relative grid lg:grid-cols-2 gap-8 lg:gap-0 min-h-[600px]"
-              {...createDelayedFadeInUp(project.animationDelay)}
             >
               {/* Left: Content */}
               <div className="flex flex-col justify-center px-6 sm:px-12 lg:px-16 py-12">
                 {/* Logo */}
                 {project.logo && (
-                  <div className="mb-6">
+                  <div
+                    className="mb-6 opacity-0 animate-heroReveal"
+                    style={{ animationDelay: `${project.animationDelay}s` }}
+                  >
                     <img
                       src={project.logo}
                       alt={project.logoAlt || `${project.title} Logo`}
@@ -39,83 +39,58 @@ export default function ProjectsSection() {
                   </div>
                 )}
 
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight leading-tight">
+                <h2
+                  className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight leading-tight opacity-0 animate-heroText"
+                  style={{ animationDelay: `${project.animationDelay + 0.1}s` }}
+                >
                   {project.title}
                 </h2>
 
-                <p className="text-xl sm:text-2xl text-muted-foreground mb-6 leading-relaxed">
+                <p
+                  className="text-xl sm:text-2xl text-muted-foreground mb-6 leading-relaxed opacity-0 animate-heroText"
+                  style={{ animationDelay: `${project.animationDelay + 0.2}s` }}
+                >
                   {project.description}
                 </p>
 
                 {/* Tech Stack */}
-                <p className="text-sm sm:text-base text-muted-foreground/70 mb-8">
+                <p
+                  className="text-sm sm:text-base text-muted-foreground/70 mb-8 opacity-0 animate-heroSubtle"
+                  style={{ animationDelay: `${project.animationDelay + 0.3}s` }}
+                >
                   {project.techStack}
                 </p>
 
                 {/* Actions */}
-                <div className="flex flex-wrap gap-4">
+                <div
+                  className="flex flex-wrap gap-4 opacity-0 animate-heroSubtle"
+                  style={{ animationDelay: `${project.animationDelay + 0.4}s` }}
+                >
                   {project.actions.map((action, index) => {
                     const isPrimary = action.variant === "default";
                     const buttonClass = isPrimary
                       ? "rounded-md bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-base"
                       : "rounded-md border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-6 text-base";
 
-                    // Handle external links
-                    if (action.href && !action.href.startsWith("/")) {
+                    const isExternal = action.href && !action.href.startsWith("/");
+                    const href = action.href || (action.label === "Learn More" ? `/projects/${project.id}` : undefined);
+
+                    if (isExternal) {
                       return (
-                        <Button
-                          key={index}
-                          size="lg"
-                          className={buttonClass}
-                          asChild
-                        >
-                          <a
-                            href={action.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
+                        <Button key={index} size="lg" className={buttonClass} asChild>
+                          <a href={action.href} target="_blank" rel="noopener noreferrer">
                             {action.label}
                           </a>
                         </Button>
                       );
                     }
 
-                    // Handle "Learn More" button - navigate to project page
-                    if (action.label === "Learn More" && !action.href) {
-                      return (
-                        <Button
-                          key={index}
-                          variant={action.variant || "outline"}
-                          size="lg"
-                          className={buttonClass}
-                          onClick={() => navigate(`/projects/${project.id}`)}
-                        >
-                          {action.label}
-                        </Button>
-                      );
-                    }
-
-                    // Handle internal links
-                    if (action.href && action.href.startsWith("/")) {
-                      return (
-                        <Button
-                          key={index}
-                          size="lg"
-                          className={buttonClass}
-                          onClick={() => navigate(action.href!)}
-                        >
-                          {action.label}
-                        </Button>
-                      );
-                    }
-
-                    // Default button (no action)
                     return (
                       <Button
                         key={index}
-                        variant={action.variant || "outline"}
                         size="lg"
                         className={buttonClass}
+                        onClick={href ? () => navigate(href) : undefined}
                       >
                         {action.label}
                       </Button>
@@ -128,7 +103,10 @@ export default function ProjectsSection() {
               <div
                 className={`relative flex items-center ${visualAlignmentClass}`}
               >
-                <div className={visualContainerClass}>
+                <div
+                  className={`${visualContainerClass} opacity-0 animate-heroReveal`}
+                  style={{ animationDelay: `${project.animationDelay + 0.15}s` }}
+                >
                   {isMobileMockup ? (
                     <>
                       {/* Light mode mockup */}
@@ -157,7 +135,7 @@ export default function ProjectsSection() {
                   )}
                 </div>
               </div>
-            </motion.div>
+            </div>
           );
         })}
       </div>

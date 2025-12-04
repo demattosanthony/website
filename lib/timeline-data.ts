@@ -19,7 +19,7 @@ export const timelineData: TimelineItem[] = [
     subsections: [
       {
         title: "Chief Technology Officer",
-        year: "2023 - Present",
+        year: "2021 - Present",
         highlights: [
           "Leading engineering team and driving business strategy",
           "Architecting always-on digital twin platform with seamless external system connectivity",
